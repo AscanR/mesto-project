@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Место</title>
+  </head>
+  <body class="main">
+    <div class="page page_place_main">
+      <header class="header header_place_page">
+        <img src="./images/logo.svg" alt="Логотип Место" class="header__logo" />
+        <div class="header__line"></div>
+      </header>
+      <nav class="profile profile_place_page">
+        <img
+          src="./images/jacques_yves_cousteau.jpg"
+          alt="Фотография Жак-Ив Кусто"
+          class="profile__avatar"
+        />
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <div class="profile__edit">
+            <div class="profile__pen"></div>
+          </div>
+          <p class="profile__position">Исследователь океана</p>
+        </div>
+
+        <div class="profile__add">
+          <div class="profile__plus"></div>
+        </div>
+      </nav>
+      <section class="cards-grid cards-grid_place_page">
+        <div class="card">
+          <img
+            src="./images/karachaevsk.jpg"
+            alt="Карачаевск. Церковь."
+            class="card__photo"
+          />
+          <div class="card__caption">
+            <p class="card__text">Карачаевск</p>
+            <div class="card__heart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="./images/elbrus_mountain.jpg"
+            alt="Гора Эльбрус на рассвете."
+            class="card__photo"
+          />
+          <div class="card__caption">
+            <p class="card__text">Гора Эльбрус</p>
+            <div class="card__heart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="./images/dombai.jpg"
+            alt="Домбай. Гора."
+            class="card__photo"
+          />
+          <div class="card__caption">
+            <p class="card__text">Домбай</p>
+            <div class="card__heart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="./images/elbrus_mountain.jpg"
+            alt="Гора Эльбрус на рассвете."
+            class="card__photo"
+          />
+          <div class="card__caption">
+            <p class="card__text">Гора Эльбрус</p>
+            <div class="card__heart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="./images/dombai.jpg"
+            alt="Домбай. Гора."
+            class="card__photo"
+          />
+          <div class="card__caption">
+            <p class="card__text">Домбай</p>
+            <div class="card__heart"></div>
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="./images/karachaevsk.jpg"
+            alt="Карачаевск. Церковь."
+            class="card__photo"
+          />
+          <div class="card__caption">
+            <p class="card__text">Карачаево-Черкесия</p>
+            <div class="card__heart"></div>
+          </div>
+        </div>
+      </section>
+      <footer class="footer footer_place_main">&copy;2021 Mesto Russia</footer>
+      <div class="popup popup_opened">
+        <form action="#" class="popup__container">
+          <button class="popup__close"><img src="./images/close_icon.svg" alt="Закрыть" class="popup__cross"/></button>
+          <h2 class="popup__heading">Редактировать профиль</h2>
+          <fieldset class="popup__form">
+            <input type="text" class="popup__item" name="name" value="Жак-Ив Кусто"/>
+            <input type="text" class="popup__item" name="prof" value="Исследователь океана"/>
+            <button type="submit" class="popup__button">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

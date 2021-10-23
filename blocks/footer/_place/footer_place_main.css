@@ -1,0 +1,14 @@
+.footer_place_main {
+  margin: 66px 200px 60px;
+  padding: 0;
+}
+@media screen and (min-width: 600px) and (max-width: 1279px) {
+  .footer_place_main {
+    margin: 54px auto 40px;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 599px) {
+  .footer_place_main {
+    margin: 48px 19px 36px;
+  }
+}

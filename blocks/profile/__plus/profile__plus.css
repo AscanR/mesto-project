@@ -1,0 +1,9 @@
+.profile__plus {
+    margin: auto;
+    background-image: url(../../../images/plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 22px;
+    height: 22px;
+  }
