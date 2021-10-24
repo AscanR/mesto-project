@@ -1,22 +1,15 @@
 .profile__add {
+  padding: 0;
   display: flex;
-  position: absolute;
   align-self: center;
-  right: 0;
-  border: 2px solid #fff;
-  border-radius: 2px;
-  width: 150px;
-  height: 50px;
+  border: 0;
+  justify-self: right;
+  background-color: transparent;
+  margin-left: 18px;
 }
 .profile__add:hover {
   opacity: 0.6;
   cursor: pointer;
-}
-@media screen and (min-width: 600px) and (max-width: 899px) {
-  .profile__add {
-    width: 50px;
-    height: 100%;
-  }
 }
 @media screen and (min-width: 320px) and (max-width: 599px) {
   .profile__add {
@@ -24,7 +17,5 @@
     margin-top: 36px;
     position: initial;
     align-self: center;
-    width: 100%;
-    height: 50px;
   }
 }

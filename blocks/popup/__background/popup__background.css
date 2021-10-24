@@ -1,0 +1,16 @@
+.popup__background {
+    padding: 0;
+    display: flex;
+    position: relative;
+    background: #fff;
+    width: 430px;
+    min-height: 330px;
+    border-radius: 10px;
+    margin: auto;
+  }
+  @media screen and (min-width: 320px) and (max-width: 599px) {
+    .popup__background {
+      width: 282px;
+      min-height: 322px;
+    }
+  }

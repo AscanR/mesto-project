@@ -1,7 +1,8 @@
 .profile {
-  display: flex;
-  position: relative;
-  flex-direction: row;
+  display: grid;
+  box-sizing: border-box;
+  gap: 0px;
+  grid-template-columns: 120px minmax(min-content, max-content) 1fr;
   max-width: 880px;
 }
 @media screen and (min-width: 600px) and (max-width: 899px) {
