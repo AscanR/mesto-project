@@ -1,0 +1,10 @@
+.popup__position {
+  display: flex;
+  flex-direction: column;
+  margin: 0 36px;
+}
+@media screen and (max-width: 599px) {
+  .popup__position {
+    margin: 0 22px;
+  }
+}

@@ -6,8 +6,17 @@
   margin-top: 48px;
   border-radius: 2px;
   width: 100%;
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 400;
 }
 .popup__button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+@media screen and (max-width: 599px) {
+  .popup__button {
+    font-size: 14px;
+    line-height: 16px;
+  }
 }

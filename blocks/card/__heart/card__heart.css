@@ -6,11 +6,16 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  background-color: transparent;
+  border: 0;
   width: 22px;
   height: 19px;
 }
-
 .card__heart:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+.card__heart:active {
   margin: auto;
   padding: 0;
   display: flex;
@@ -20,4 +25,5 @@
   background-size: contain;
   width: 22px;
   height: 19px;
+  opacity: 1;
 }

@@ -11,6 +11,8 @@
 1024 px
 1280 px
 
+Github Pages: https://ascanr.github.io/mesto-project/
+
 ### Применяемые технологии
 
 HTML 5, CSS4
