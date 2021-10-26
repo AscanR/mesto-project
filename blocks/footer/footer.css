@@ -1,9 +1,5 @@
 .footer {
   max-width: 880px;
-  color: #545454;
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: 400;
 }
 @media screen and (max-width: 899px) {
   .footer {
@@ -13,7 +9,5 @@
 @media screen and (max-width: 599px) {
   .footer {
     max-width: 282px;
-    font-size: 14px;
-    line-height: 16px;
   }
 }
