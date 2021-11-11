@@ -1,0 +1,8 @@
+.card__heart_active {
+  background: url(../../../../images/heart_active.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 1;
+  transition: 0.3s;
+}
+

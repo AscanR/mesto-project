@@ -1,19 +1,21 @@
-.card__heart {
+.card__trash {
   margin: auto;
   padding: 0;
   display: flex;
-  background: url(../../../images/heart_inactive.svg);
+  background-image: url(../../../images/trash.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   background-color: transparent;
   border: 0;
-  width: 22px;
+  width: 18px;
   height: 19px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
-.card__heart:hover {
+.card__trash:hover {
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.6;
   transition: 0.3s;
 }
-

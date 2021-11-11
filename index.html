@@ -29,81 +29,14 @@
         </div>
         <button class="profile__add" type="button" aria-label="Add"></button>
       </section>
-      <section class="cards-grid page__cards-grid">
-        <article class="card">
-          <img
-            src="./images/karachaevsk.jpg"
-            alt="Карачаевск. Церковь."
-            class="card__photo"
-          />
-          <div class="card__caption">
-            <h2 class="card__text">Карачаевск</h2>
-            <button class="card__heart" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img
-            src="./images/elbrus_mountain.jpg"
-            alt="Гора Эльбрус на рассвете."
-            class="card__photo"
-          />
-          <div class="card__caption">
-            <h2 class="card__text">Гора Эльбрус</h2>
-            <button class="card__heart" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img
-            src="./images/dombai.jpg"
-            alt="Домбай. Гора."
-            class="card__photo"
-          />
-          <div class="card__caption">
-            <h2 class="card__text">Домбай</h2>
-            <button class="card__heart" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img
-            src="./images/elbrus_mountain.jpg"
-            alt="Гора Эльбрус на рассвете."
-            class="card__photo"
-          />
-          <div class="card__caption">
-            <h2 class="card__text">Гора Эльбрус</h2>
-            <button class="card__heart" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img
-            src="./images/dombai.jpg"
-            alt="Домбай. Гора."
-            class="card__photo"
-          />
-          <div class="card__caption">
-            <h2 class="card__text">Домбай</h2>
-            <button class="card__heart" type="button"></button>
-          </div>
-        </article>
-        <article class="card">
-          <img
-            src="./images/karachaevsk.jpg"
-            alt="Карачаевск. Церковь."
-            class="card__photo"
-          />
-          <div class="card__caption">
-            <h2 class="card__text">Карачаево-Черкесия</h2>
-            <button class="card__heart" type="button"></button>
-          </div>
-        </article>
-      </section>
+      <section class="cards-grid page__cards-grid"></section>
       <footer class="footer main__footer">
         <p class="footer__text">&copy;2021 Mesto Russia</p>
       </footer>
-      <div class="popup popup_opened">
+      <div class="popup" id="popup-profile">
         <div class="popup__container">
-          <button class="popup__close" type="button" aria-label="Close"></button>
-          <form action="#" class="popup__position" name="popup">
+          <button class="popup__close" type="button" aria-label="Close" id="close-profile"></button>
+          <form action="#" class="popup__position" name="popup" id="edit-profile">
             <h2 class="popup__heading">Редактировать профиль</h2>
             <fieldset class="popup__inputs">
               <input
@@ -112,6 +45,7 @@
                 name="name"
                 value="Жак-Ив Кусто"
                 placeholder="Имя"
+                id="name"
               />
               <input
                 type="text"
@@ -119,12 +53,66 @@
                 name="prof"
                 value="Исследователь океана"
                 placeholder="Должность"
+                id="profile"
               />
-              <button type="submit" class="popup__button">Сохранить</button>
+              <button type="submit" class="popup__button" id="save-button">Сохранить</button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <div class="popup" id="popup-place">
+        <div class="popup__container">
+          <button class="popup__close" type="button" aria-label="Close" id="close-place"></button>
+          <form action="#" class="popup__position" name="popup" id="add-place">
+            <h2 class="popup__heading">Новое место</h2>
+            <fieldset class="popup__inputs">
+              <input
+                type="text"
+                class="popup__item"
+                name="name"
+                value=""
+                placeholder="Название"
+                id="name-place"
+              />
+              <input
+                type="text"
+                class="popup__item"
+                name="prof"
+                value=""
+                placeholder="Ссылка на картинку"
+                id="place-source"
+              />
+              <button type="submit" class="popup__button" id="create-button">Создать</button>
             </fieldset>
           </form>
         </div>
       </div>
     </main>
+    <template id="card-template">
+      <article class="card">
+        <img
+          src=""
+          alt="picture"
+          class="card__photo"
+          id="loop"
+        />
+        <button class="card__trash" type="button"></button>
+        <div class="card__caption">
+          <h2 class="card__text"></h2>
+          <button class="card__heart" type="button"></button>
+        </div>
+      </article>
+    </template>
+    <div class="popup" id="popup-img">
+      <div class="popup__container popup__container_img">
+        <button class="popup__close" type="button" aria-label="Close" id="close-img"></button>
+        <img
+          src=""
+          alt="picture"
+          class="popup__photo"
+        />
+        <p class="popup__caption"></p>
+      </div>
+    <script src="./pages/index.js"></script>
   </body>
 </html>

@@ -1,0 +1,9 @@
+.popup__photo {
+  display: block;
+  padding: 0;
+  margin-bottom: 10px;
+  background-size: contain;
+  max-width: 75vw;
+  max-height: 75vh;
+  background-position: center;
+}

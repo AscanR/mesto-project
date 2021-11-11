@@ -16,6 +16,7 @@
 .profile__add:hover {
   opacity: 0.6;
   cursor: pointer;
+  transition: 0.3s;
 }
 @media screen and (max-width: 599px) {
   .profile__add {
