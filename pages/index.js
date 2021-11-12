@@ -32,71 +32,82 @@ const initialCards = [
 
 function cardPlacer () {
   for (let i = 0; i < initialCards.length; i++) {
-  let arr = initialCards[i]
+  const arr = initialCards[i]
   const cardTemplate = document.querySelector('#card-template').content
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
   cardElement.querySelector('.card__photo').src = arr.link
   cardElement.querySelector('.card__text').textContent = arr.name
+  cardElement.querySelector('.card__photo').alt = arr.name
   cardContainer.prepend(cardElement)}}
 cardPlacer ()
 
-function closeProfile() {
-  popupProfile.classList.remove('popup_opened')
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
-closeButtonProfile.addEventListener('click', closeProfile)
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
-editButton.addEventListener('click', () => {
-  popupProfile.classList.add('popup_opened')
-})
+closeButtonProfile.addEventListener('click', () => closePopup(popupProfile))
+
+editButton.addEventListener('click', () => openPopup(popupProfile))
 
 function formSubmitHandler (evt) {
   evt.preventDefault()
   document.querySelector('.profile__name').textContent = nameInput.value
   document.querySelector('.profile__position').textContent = profInput.value
 }
+
 formElement.addEventListener('submit', formSubmitHandler)
 
-saveButton.addEventListener('click', closeProfile)
+saveButton.addEventListener('click', () => closePopup (popupProfile))
 
-function closePlace() {
-  popupPlace.classList.remove('popup_opened')
-}
-closeButtonPlace.addEventListener('click', closePlace)
+closeButtonPlace.addEventListener('click', () => closePopup (popupPlace))
 
 addButton.addEventListener('click', () => {
   sourcePlaceInput.value = ''
   namePlaceInput.value = ''
-  popupPlace.classList.add('popup_opened')
+  openPopup(popupPlace)
 })
 
-function formPlaceSubmitHandler (evt) {
-  evt.preventDefault()
+function createCard(cardData) {
   const cardTemplate = document.querySelector('#card-template').content
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
-  cardElement.querySelector('.card__photo').src = sourcePlaceInput.value
-  cardElement.querySelector('.card__text').textContent = namePlaceInput.value
-  cardContainer.prepend(cardElement)
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true) 
+  cardElement.querySelector('.card__photo').src = cardData.link
+  cardElement.querySelector('.card__text').textContent = cardData.name
+  cardElement.querySelector('.card__photo').alt = cardData.name
+  return cardElement;
+}
+
+formElementPlace.addEventListener('submit', (evt) => {
+  evt.preventDefault()
+  const cardData = {
+    name: namePlaceInput.value,
+    link: sourcePlaceInput.value
+  }
+
+  const newCard = createCard(cardData)
+  cardContainer.prepend(newCard)
+
   const deleteButton = document.querySelectorAll('.card__trash').forEach((a) => {
     a.addEventListener('click', (e) => {
     const item = e.target.closest('.card')
     item.remove()}) 
   })
-  const heartActive = document.querySelectorAll('.card__heart').forEach((b) => {
-    b.addEventListener('click', (evt) => {
+  
+  document.querySelector('.card__heart').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__heart_active')})
-  })
+
   const loopButton = document.querySelectorAll('.card__photo').forEach((el) => {
     el.addEventListener('click', (obj) => {
     popupImage.classList.add('popup_opened')
     popupImage.querySelector('.popup__photo').src = obj.target.closest('.card__photo').src
     popupImage.querySelector('.popup__caption').textContent = obj.target.closest('.card').textContent})
   })
-} 
+})
 
-formElementPlace.addEventListener('submit', formPlaceSubmitHandler)
-
-createButton.addEventListener('click', closePlace)
+createButton.addEventListener('click', () => closePopup (popupPlace))
 
 const deleteButton = document.querySelectorAll('.card__trash').forEach((a) => {
     a.addEventListener('click', (e) => {
@@ -108,16 +119,12 @@ const deleteButton = document.querySelectorAll('.card__trash').forEach((a) => {
     b.addEventListener('click', (evt) => {
     evt.target.classList.toggle('card__heart_active')})
   })
-
-  function closeLoop() {
-    popupImage.classList.remove('popup_opened')
-  }
   
-  closeButtonLoop.addEventListener('click', closeLoop)
+  closeButtonLoop.addEventListener('click', () => closePopup (popupImage))
 
   const loopButton = document.querySelectorAll('.card__photo').forEach((el) => {
     el.addEventListener('click', (obj) => {
-    popupImage.classList.add('popup_opened')
+    openPopup(popupImage)
     popupImage.querySelector('.popup__photo').src = obj.target.closest('.card__photo').src
     popupImage.querySelector('.popup__caption').textContent = obj.target.closest('.card').textContent})
   })
