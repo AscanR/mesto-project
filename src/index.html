@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Место</title>
+</head>
+<body class="main">
+<main class="page main__place">
+    <header class="header page__header">
+        <img alt="Логотип Место" class="header__logo" src="<%=require('./images/logo.svg')%>"/>
+    </header>
+    <section class="profile page__profile">
+        <img
+              alt="Фотография Жак-Ив Кусто"
+              class="profile__avatar"
+              src="<%=require('./images/jacques_yves_cousteau.jpg')%>"
+        />
+        <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <button
+                  aria-label="Edit"
+                  class="profile__edit"
+                  type="button"
+            ></button>
+            <p class="profile__position">Исследователь океана</p>
+        </div>
+        <button aria-label="Add" class="profile__add" type="button"></button>
+    </section>
+    <section class="cards-grid page__cards-grid"></section>
+    <footer class="footer main__footer">
+        <p class="footer__text">&copy;2021 Mesto Russia</p>
+    </footer>
+    <div class="popup" id="popup-profile">
+        <div class="popup__container">
+            <button aria-label="Close" class="popup__close" id="close-profile" type="button"></button>
+            <form action="#" class="popup__position" id="edit-profile" name="popup" novalidate>
+                <h2 class="popup__heading">Редактировать профиль</h2>
+                <fieldset class="popup__inputs">
+                    <input minlength="2" maxlength="40" class="popup__item" id="name" name="name" placeholder="Имя"
+                           required
+                           type="text"
+                           value="Жак-Ив Кусто"/>
+                    <span id="error-name" class="popup__error"></span>
+                    <input minlength="2" maxlength="200" class="popup__item" id="profile" name="prof"
+                           placeholder="Должность"
+                           required type="text"
+                           value="Исследователь океана"/>
+                    <span id="error-profile" class="popup__error"></span>
+                    <button class="popup__button" id="save-button" type="submit">
+                        Сохранить
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="popup" id="popup-place">
+        <div class="popup__container">
+            <button aria-label="Close" class="popup__close" id="close-place" type="button"></button>
+            <form action="#" class="popup__position" id="add-place" name="popup" novalidate>
+                <h2 class="popup__heading">Новое место</h2>
+                <fieldset class="popup__inputs">
+                    <input minlength="2" maxlength="30" class="popup__item" id="name-place" name="name"
+                           placeholder="Название"
+                           required type="text"
+                           value=""/>
+                    <span id="error-name-place" class="popup__error"></span>
+                    <input type="url" class="popup__item" id="place-source" name="prof" placeholder="Ссылка на картинку"
+                           required value=""/>
+                    <span id="error-place-source" class="popup__error"></span>
+                    <button class="popup__button" id="create-button" type="submit">Создать</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>
+<template id="card-template">
+    <article class="card">
+        <img
+              alt="picture"
+              class="card__photo"
+              id="loop"
+              src=""
+        />
+        <button class="card__trash" type="button"></button>
+        <div class="card__caption">
+            <h2 class="card__text"></h2>
+            <button class="card__heart" type="button"></button>
+        </div>
+    </article>
+</template>
+<div class="popup" id="popup-img">
+    <div class="popup__container_img">
+        <button aria-label="Close" class="popup__close" id="close-img" type="button"></button>
+        <img
+              alt="picture"
+              class="popup__photo"
+              src=""
+        />
+        <p class="popup__caption"></p>
+    </div>
+</div>
+</body>
+</html>
