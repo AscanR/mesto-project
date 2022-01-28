@@ -1,5 +1,5 @@
 import {openPopup} from "./modal";
-import {popupImagePhoto, popupImageCaption} from "../index";
+import {popupImagePhoto, popupImageCaption} from "./index";
 
 export const cardContainer = document.querySelector('.cards-grid');
 export const popupImage = document.querySelector('#popup-img');
@@ -33,13 +33,13 @@ const initialCards = [
 export function createCard(cardData) {
   const cardTemplate = document.querySelector('#card-template').content
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
-  const cardPhotoData = cardElement.querySelector('.card__photo')
-  cardPhotoData.src = cardData.link
+  const cardPhoto = cardElement.querySelector('.card__photo')
+  cardPhoto.src = cardData.link
   cardElement.querySelector('.card__text').textContent = cardData.name
-  cardPhotoData.alt = cardData.name
+  cardPhoto.alt = cardData.name
   cardElement.querySelector('.card__trash').addEventListener('click', (evt) => evt.target.closest('.card').remove())
   cardElement.querySelector('.card__heart').addEventListener('click', (evt) => evt.target.classList.toggle('card__heart_active'))
-  cardElement.querySelector('.card__photo').addEventListener('click', () => {
+  cardPhoto.addEventListener('click', () => {
     popupImageCaption.textContent = cardData.name
     popupImagePhoto.src = cardData.link
     popupImagePhoto.alt = cardData.name
@@ -48,10 +48,10 @@ export function createCard(cardData) {
   return cardElement
 }
 
-export function cardPlacer() {
+export function renderCards() {
   for (let i = 0; i < initialCards.length; i++) {
-    const arr = initialCards[i]
-    const newCard = createCard(arr)
+    const cardData = initialCards[i]
+    const newCard = createCard(cardData)
     cardContainer.prepend(newCard)
   }
 }
