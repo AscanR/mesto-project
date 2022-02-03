@@ -9,13 +9,16 @@ const profileNameInput = profilePopup.querySelector('#name');
 const profileAboutInput = profilePopup.querySelector('#profile');
 const profileEditButton = document.querySelector('.profile__edit');
 const profileAvatarSaveButton = document.querySelector('#save-button-img-prof');
+const profileAvatarEdit = document.querySelector('#edit-img-prof')
 const profileAvatarPopup = document.querySelector('#popup-img-prof');
 const profileAvatarInput = document.querySelector('#img-prof');
 const profileAvatarEditButton = document.querySelector('.profile__avatar');
+const profileSubmitButton = profilePopup.querySelector('#save-button')
+const profileAvatar = document.querySelector('.profile__avatar')
 
 const handleProfileEditClick = () => {
   profileNameInput.value = profileNameElement.textContent,
-  profileAboutInput.value = profileAboutElement.textContent
+      profileAboutInput.value = profileAboutElement.textContent
 
   openPopup(profilePopup)
   disableButton(profilePopup)
@@ -31,9 +34,7 @@ const handleProfileAvatarEditClick = () => {
 const handleProfileSave = (evt) => {
   evt.preventDefault()
 
-  const submitButton = profilePopup.querySelector('#save-button')
-
-  submitButton.textContent = 'Сохраняется...'
+  profileSubmitButton.textContent = 'Сохраняется...'
   disableButton(profileForm)
 
   const userData = {
@@ -42,19 +43,19 @@ const handleProfileSave = (evt) => {
   }
 
   updateUser(userData)
-    .then(res => {
-      const {name, about} = res
+      .then(res => {
+        const {name, about} = res
 
-      profileNameElement.textContent = name
-      profileAboutElement.textContent = about
+        profileNameElement.textContent = name
+        profileAboutElement.textContent = about
 
-      closePopup(profilePopup)
-    })
-    .catch(error => console.error(error))
-    .finally(() => {
-      enableButton(profileForm)
-      submitButton.textContent = 'Сохранить'
-    })
+        closePopup(profilePopup)
+      })
+      .catch(error => console.error(error))
+      .finally(() => {
+        enableButton(profileForm)
+        profileSubmitButton.textContent = 'Сохранить'
+      })
 }
 
 const handleProfileAvatarSave = (evt) => {
@@ -66,21 +67,19 @@ const handleProfileAvatarSave = (evt) => {
   const avatar = profileAvatarInput.value
 
   updateUserAvatar(avatar)
-    .then(res => {
-      profileAvatarEditButton.src = res.avatar
+      .then(res => {
+        profileAvatarEditButton.src = res.avatar
 
-      closePopup(profileAvatarPopup)
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
-      enableButton(profileAvatarPopup)
-      profileAvatarSaveButton.textContent = 'Сохранить'
-    })
+        closePopup(profileAvatarPopup)
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        enableButton(profileAvatarPopup)
+        profileAvatarSaveButton.textContent = 'Сохранить'
+      })
 }
 
-export const setUserData = ({ avatar, about, name }) => {
-  const profileAvatar = document.querySelector('.profile__avatar')
-
+export const setUserData = ({avatar, about, name}) => {
   profileAvatar.src = avatar
   profileNameElement.textContent = name
   profileAboutElement.textContent = about
@@ -90,5 +89,5 @@ export const setUserListeners = () => {
   profileForm.addEventListener('submit', handleProfileSave)
   profileEditButton.addEventListener('click', handleProfileEditClick);
   profileAvatarEditButton.addEventListener('click', handleProfileAvatarEditClick);
-  profileAvatarSaveButton.addEventListener('click', handleProfileAvatarSave)
+  profileAvatarEdit.addEventListener('submit', handleProfileAvatarSave)
 }
