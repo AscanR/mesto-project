@@ -21,21 +21,21 @@ const handleProfileEditClick = () => {
       profileAboutInput.value = profileAboutElement.textContent
 
   openPopup(profilePopup)
-  disableButton(profilePopup)
+  disableButton(profileSubmitButton)
 }
 
 const handleProfileAvatarEditClick = () => {
   profileAvatarInput.value = ''
 
   openPopup(profileAvatarPopup)
-  disableButton(profileAvatarPopup)
+  disableButton(profileAvatarSaveButton)
 }
 
 const handleProfileSave = (evt) => {
   evt.preventDefault()
 
   profileSubmitButton.textContent = 'Сохраняется...'
-  disableButton(profileForm)
+  disableButton(profileSubmitButton)
 
   const userData = {
     name: profileNameInput.value,
@@ -53,7 +53,7 @@ const handleProfileSave = (evt) => {
       })
       .catch(error => console.error(error))
       .finally(() => {
-        enableButton(profileForm)
+        enableButton(profileSubmitButton)
         profileSubmitButton.textContent = 'Сохранить'
       })
 }
@@ -61,7 +61,7 @@ const handleProfileSave = (evt) => {
 const handleProfileAvatarSave = (evt) => {
   evt.preventDefault()
 
-  disableButton(profileAvatarPopup)
+  disableButton(profileAvatarSaveButton)
   profileAvatarSaveButton.textContent = 'Сохраняется...'
 
   const avatar = profileAvatarInput.value
@@ -74,7 +74,7 @@ const handleProfileAvatarSave = (evt) => {
       })
       .catch(err => console.error(err))
       .finally(() => {
-        enableButton(profileAvatarPopup)
+        enableButton(profileAvatarSaveButton)
         profileAvatarSaveButton.textContent = 'Сохранить'
       })
 }
