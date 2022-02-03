@@ -12,11 +12,8 @@
         <img alt="Логотип Место" class="header__logo" src="<%=require('./images/logo.svg')%>"/>
     </header>
     <section class="profile page__profile">
-        <img
-              alt="Фотография Жак-Ив Кусто"
-              class="profile__avatar"
-              src="<%=require('./images/jacques_yves_cousteau.jpg')%>"
-        />
+        <img alt="Аватар" class="profile__avatar profile__avatar_icon"
+             src="<%=require('./images/jacques_yves_cousteau.jpg')%>">
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button
@@ -38,16 +35,16 @@
             <form action="#" class="popup__position" id="edit-profile" name="popup" novalidate>
                 <h2 class="popup__heading">Редактировать профиль</h2>
                 <fieldset class="popup__inputs">
-                    <input minlength="2" maxlength="40" class="popup__item" id="name" name="name" placeholder="Имя"
+                    <input class="popup__item" id="name" maxlength="40" minlength="2" name="name" placeholder="Имя"
                            required
                            type="text"
                            value="Жак-Ив Кусто"/>
-                    <span id="error-name" class="popup__error"></span>
-                    <input minlength="2" maxlength="200" class="popup__item" id="profile" name="prof"
+                    <span class="popup__error" id="error-name"></span>
+                    <input class="popup__item" id="profile" maxlength="200" minlength="2" name="prof"
                            placeholder="Должность"
                            required type="text"
                            value="Исследователь океана"/>
-                    <span id="error-profile" class="popup__error"></span>
+                    <span class="popup__error" id="error-profile"></span>
                     <button class="popup__button" id="save-button" type="submit">
                         Сохранить
                     </button>
@@ -61,14 +58,14 @@
             <form action="#" class="popup__position" id="add-place" name="popup" novalidate>
                 <h2 class="popup__heading">Новое место</h2>
                 <fieldset class="popup__inputs">
-                    <input minlength="2" maxlength="30" class="popup__item" id="name-place" name="name"
+                    <input class="popup__item" id="name-place" maxlength="30" minlength="2" name="name"
                            placeholder="Название"
                            required type="text"
                            value=""/>
-                    <span id="error-name-place" class="popup__error"></span>
-                    <input type="url" class="popup__item" id="place-source" name="prof" placeholder="Ссылка на картинку"
-                           required value=""/>
-                    <span id="error-place-source" class="popup__error"></span>
+                    <span class="popup__error" id="error-name-place"></span>
+                    <input class="popup__item" id="place-source" name="prof" placeholder="Ссылка на картинку" required
+                           type="url" value=""/>
+                    <span class="popup__error" id="error-place-source"></span>
                     <button class="popup__button" id="create-button" type="submit">Создать</button>
                 </fieldset>
             </form>
@@ -86,7 +83,10 @@
         <button class="card__trash" type="button"></button>
         <div class="card__caption">
             <h2 class="card__text"></h2>
-            <button class="card__heart" type="button"></button>
+            <div class="card__like-container">
+                <button class="card__heart" type="button"></button>
+                <div class="card__like-counter"></div>
+            </div>
         </div>
     </article>
 </template>
@@ -99,6 +99,31 @@
               src=""
         />
         <p class="popup__caption"></p>
+    </div>
+</div>
+<div class="popup" id="popup-img-prof">
+    <div class="popup__container">
+        <button aria-label="Close" class="popup__close" type="button"></button>
+        <form action="#" class="popup__position" id="edit-img-prof" name="popup" novalidate>
+            <h2 class="popup__heading">Обновить аватар</h2>
+            <fieldset class="popup__inputs">
+                <input class="popup__item" id="img-prof" name="prof" placeholder="Ссылка на картинку" required
+                       type="url" value=""/>
+                <span class="popup__error" id="error-img-prof"></span>
+                <button class="popup__button" id="save-button-img-prof" type="submit">Сохранить</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="popup" id="popup-trash">
+    <div class="popup__container">
+        <button aria-label="Close" class="popup__close" type="button"></button>
+        <form action="#" class="popup__position" name="popup" novalidate>
+            <h2 class="popup__heading">Вы уверены?</h2>
+            <fieldset class="popup__inputs">
+                <button class="popup__button" id="popup-trash-button" type="submit">Да</button>
+            </fieldset>
+        </form>
     </div>
 </div>
 </body>
