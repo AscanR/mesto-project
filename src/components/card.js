@@ -38,7 +38,7 @@ const handleCardDelete = (cardId) => {
 const handleCardLike = (cardElement, cardId, currentUserId) => {
   const cardLikeButton = cardElement.querySelector('.card__heart')
   const isCardLikeButtonActive = cardLikeButton.classList.contains('card__heart_active')
-  const likeButton = cardElement.querySelector('.card__like-counter')
+  const likeCounter = cardElement.querySelector('.card__like-counter')
   toggleCardLike(cardId, isCardLikeButtonActive)
       .then(res => {
         const {likes} = res
@@ -50,7 +50,7 @@ const handleCardLike = (cardElement, cardId, currentUserId) => {
           cardLikeButton.classList.remove('card__heart_active')
         }
 
-        likeButton.textContent = likes.length.toString()
+        likeCounter.textContent = likes.length.toString()
       })
       .catch(err => console.error(err))
 }
@@ -68,14 +68,14 @@ const handleCardAddClick = () => {
   placeNameInput.value = ''
 
   openPopup(placePopup)
-  disableButton(placePopup)
+  disableButton(cardCreateButton)
 }
 
 const handleCardAdd = (evt) => {
   evt.preventDefault()
 
   cardCreateButton.textContent = 'Сохраняется...'
-  disableButton(placePopup)
+  disableButton(cardCreateButton)
 
   const cardData = {
     name: placeNameInput.value, link: placeSourceInput.value
@@ -95,7 +95,7 @@ const handleCardAdd = (evt) => {
       })
       .catch((err) => console.error(err))
       .finally(() => {
-        enableButton(placePopup)
+        enableButton(cardCreateButton)
         cardCreateButton.textContent = 'Создать'
       })
 }
