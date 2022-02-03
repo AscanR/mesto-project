@@ -1,5 +1,5 @@
 import {addCard, deleteCard, toggleCardLike} from './api'
-import {openPopup, closePopup, disableButton, enableButton} from './modal'
+import {closePopup, disableButton, enableButton, openPopup} from './modal'
 
 const placeForm = document.querySelector('#add-place');
 const cardContainer = document.querySelector('.cards-grid');
@@ -14,19 +14,19 @@ const popupImageCaption = popupImage.querySelector('.popup__caption');
 const popupTrash = document.querySelector('#popup-trash')
 const popupTrashButton = document.querySelector('#popup-trash-button')
 
+
 const handleCardDeleteConfirm = (cardElement, cardId) => {
   popupTrashButton.textContent = 'Удаляется...'
-    
-  deleteCard(cardId)
-    .then(() => {
-      cardElement.remove()
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
-      popupTrashButton.textContent = 'Да'
 
-      closePopup(popupTrash)
-    })
+  deleteCard(cardId)
+      .then(() => {
+        cardElement.remove()
+        closePopup(popupTrash)
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        popupTrashButton.textContent = 'Да'
+      })
 }
 
 const handleCardDelete = (cardId) => {
@@ -38,21 +38,21 @@ const handleCardDelete = (cardId) => {
 const handleCardLike = (cardElement, cardId, currentUserId) => {
   const cardLikeButton = cardElement.querySelector('.card__heart')
   const isCardLikeButtonActive = cardLikeButton.classList.contains('card__heart_active')
-
+  const likeButton = cardElement.querySelector('.card__like-counter')
   toggleCardLike(cardId, isCardLikeButtonActive)
-    .then(res => {
-      const { likes } = res
-      const isLiked = Boolean(likes.find((user) => user._id === currentUserId))
+      .then(res => {
+        const {likes} = res
+        const isLiked = Boolean(likes.find((user) => user._id === currentUserId))
 
-      if (isLiked) {
-        cardLikeButton.classList.add('card__heart_active')
-      } else {
-        cardLikeButton.classList.remove('card__heart_active')
-      }
+        if (isLiked) {
+          cardLikeButton.classList.add('card__heart_active')
+        } else {
+          cardLikeButton.classList.remove('card__heart_active')
+        }
 
-      cardElement.querySelector('.card__like-counter').textContent = likes.length.toString()
-    })
-    .catch(err => console.error(err))
+        likeButton.textContent = likes.length.toString()
+      })
+      .catch(err => console.error(err))
 }
 
 const handleCardPhotoClick = (name, link) => {
@@ -78,32 +78,31 @@ const handleCardAdd = (evt) => {
   disableButton(placePopup)
 
   const cardData = {
-    name: placeNameInput.value,
-    link: placeSourceInput.value
+    name: placeNameInput.value, link: placeSourceInput.value
   }
 
   addCard(cardData)
-    .then((res) => {
-      const newCard = createCard(
-        {...res, cardId: res._id, ownerId: res.owner._id},
-        res.owner._id,
-        handleCardLike,
-        handleCardDelete,
-        handleCardPhotoClick
-      )
+      .then((res) => {
+        const newCard = createCard({
+          ...res,
+          cardId: res._id,
+          ownerId: res.owner._id
+        }, res.owner._id, handleCardLike, handleCardDelete, handleCardPhotoClick)
 
-      cardContainer.prepend(newCard)
+        cardContainer.prepend(newCard)
 
-      closePopup(placePopup)
-    })
-    .catch((err) => console.error(err))
-    .finally(() => {
-      enableButton(placePopup)
-      cardCreateButton.textContent = 'Создать'
-    })
+        closePopup(placePopup)
+      })
+      .catch((err) => console.error(err))
+      .finally(() => {
+        enableButton(placePopup)
+        cardCreateButton.textContent = 'Создать'
+      })
 }
 
-function createCard({name, link, likes, cardId, ownerId}, currentUserId, handleLikeClick, handleDeleteClick, handlePhotoClick) {
+function createCard({
+                      name, link, likes, cardId, ownerId
+                    }, currentUserId, handleLikeClick, handleDeleteClick, handlePhotoClick) {
   const cardTemplate = document.querySelector('#card-template').content
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true)
   const cardPhoto = cardElement.querySelector('.card__photo')
@@ -137,13 +136,11 @@ function createCard({name, link, likes, cardId, ownerId}, currentUserId, handleL
 export function renderCards(cards, currentUserId) {
   for (let i = 0; i < 9; i++) {
     const cardData = cards[i]
-    const newCard = createCard(
-      {...cardData, cardId: cardData._id, ownerId: cardData.owner._id},
-      currentUserId,
-      handleCardLike,
-      handleCardDelete,
-      handleCardPhotoClick
-    )
+    const newCard = createCard({
+      ...cardData,
+      cardId: cardData._id,
+      ownerId: cardData.owner._id
+    }, currentUserId, handleCardLike, handleCardDelete, handleCardPhotoClick)
 
     cardContainer.append(newCard)
   }
@@ -153,7 +150,7 @@ export const setCardListeners = () => {
   placeForm.addEventListener('submit', handleCardAdd);
   cardAddButton.addEventListener('click', handleCardAddClick);
 
-  popupTrashButton.addEventListener('click', () => {
+  popupTrash.addEventListener('submit', () => {
     const cardId = popupTrash.getAttribute('data-card-id')
     const cardElement = document.querySelector(`[data-card-id="${cardId}"]`)
 

@@ -12,8 +12,10 @@
         <img alt="Логотип Место" class="header__logo" src="<%=require('./images/logo.svg')%>"/>
     </header>
     <section class="profile page__profile">
-        <img alt="Аватар" class="profile__avatar profile__avatar_icon"
-             src="<%=require('./images/jacques_yves_cousteau.jpg')%>">
+        <div class="profile__overlay">
+            <img alt="Аватар" class="profile__avatar profile__avatar_icon"
+                 src="<%=require('./images/jacques_yves_cousteau.jpg')%>">
+        </div>
         <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button
